@@ -10,6 +10,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/Categories";
+import Transactions from "./pages/Transactions"; // <-- Impor komponen baru
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,17 @@ const App = () => (
                   <ProtectedRoute>
                     <DashboardLayout>
                       <Categories />
+                    </DashboardLayout>
+                  </ProtectedRoute>
+                }
+              />
+              {/* Tambahkan route baru di bawah ini */}
+              <Route
+                path="/transactions"
+                element={
+                  <ProtectedRoute>
+                    <DashboardLayout>
+                      <Transactions />
                     </DashboardLayout>
                   </ProtectedRoute>
                 }
