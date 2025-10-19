@@ -19,6 +19,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -173,8 +174,12 @@ export default function BankAccounts() {
               <DialogTitle>
                 {editingAccount ? "Edit Rekening Bank" : "Tambah Rekening Baru"}
               </DialogTitle>
+              {/* Tambahkan deskripsi ini untuk memperbaiki warning */}
+              <DialogDescription>
+                Isi detail rekening bank Anda di bawah ini. Klik simpan jika sudah selesai.
+              </DialogDescription>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
               <div className="space-y-2">
                 <Label htmlFor="bank_name">Nama Bank</Label>
                 <Input id="bank_name" value={formData.bank_name} onChange={(e) => setFormData({ ...formData, bank_name: e.target.value })} placeholder="Contoh: Bank BCA" required />

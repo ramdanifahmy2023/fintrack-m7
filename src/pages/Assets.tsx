@@ -35,7 +35,7 @@ interface Asset {
   id: string;
   name: string;
   type: string;
-  acquisition_date: string;
+  acquired_at: string; // Ganti ini
   initial_value: number;
   current_value: number;
 }
@@ -49,7 +49,7 @@ export default function Assets() {
   const [formData, setFormData] = useState({
     name: "",
     type: "",
-    acquisition_date: "",
+    acquired_at: "", // Ganti ini
     initial_value: "",
     current_value: "",
   });
@@ -67,7 +67,7 @@ export default function Assets() {
         .from("assets")
         .select("*")
         .eq("user_id", user!.id)
-        .order("acquisition_date", { ascending: false });
+        .order("acquired_at", { ascending: false }); // Ganti ini
 
       if (error) throw error;
       setAssets(data || []);
@@ -87,7 +87,7 @@ export default function Assets() {
         user_id: user!.id,
         name: formData.name,
         type: formData.type,
-        acquisition_date: formData.acquisition_date,
+        acquired_at: formData.acquired_at, // Ganti ini
         initial_value: parseFloat(formData.initial_value),
         current_value: parseFloat(formData.current_value),
       };
@@ -132,7 +132,7 @@ export default function Assets() {
     setFormData({
       name: asset.name,
       type: asset.type,
-      acquisition_date: asset.acquisition_date,
+      acquired_at: asset.acquired_at, // Ganti ini
       initial_value: asset.initial_value.toString(),
       current_value: asset.current_value.toString(),
     });
@@ -144,7 +144,7 @@ export default function Assets() {
     setFormData({
       name: "",
       type: "",
-      acquisition_date: new Date().toISOString().substring(0, 10),
+      acquired_at: new Date().toISOString().substring(0, 10), // Ganti ini
       initial_value: "",
       current_value: "",
     });
@@ -194,8 +194,8 @@ export default function Assets() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="acquisition_date">Tanggal Akuisi</Label>
-                <Input id="acquisition_date" type="date" value={formData.acquisition_date} onChange={(e) => setFormData({ ...formData, acquisition_date: e.target.value })} required />
+                <Label htmlFor="acquired_at">Tanggal Akuisisi</Label> {/* Ganti ini */}
+                <Input id="acquired_at" type="date" value={formData.acquired_at} onChange={(e) => setFormData({ ...formData, acquired_at: e.target.value })} required /> {/* Ganti ini */}
               </div>
 
               <div className="space-y-2">
@@ -237,7 +237,7 @@ export default function Assets() {
                 <TableRow key={asset.id}>
                   <TableCell className="font-medium">{asset.name}</TableCell>
                   <TableCell>{asset.type}</TableCell>
-                  <TableCell>{format(new Date(asset.acquisition_date), "d MMMM yyyy")}</TableCell>
+                  <TableCell>{format(new Date(asset.acquired_at), "d MMMM yyyy")}</TableCell> {/* Ganti ini */}
                   <TableCell className="text-right">{formatCurrency(asset.initial_value)}</TableCell>
                   <TableCell className="text-right font-semibold">{formatCurrency(asset.current_value)}</TableCell>
                   <TableCell className="text-right">
