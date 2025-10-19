@@ -12,7 +12,8 @@ import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/Categories";
 import Transactions from "./pages/Transactions";
 import Assets from "./pages/Assets";
-import BankAccounts from "./pages/BankAccounts"; // <-- Impor komponen baru
+import BankAccounts from "./pages/BankAccounts";
+import Reports from "./pages/Reports"; // <-- Impor komponen baru
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -67,13 +68,23 @@ const App = () => (
                   </ProtectedRoute>
                 }
               />
-              {/* Tambahkan route baru di bawah ini */}
               <Route
                 path="/bank-accounts"
                 element={
                   <ProtectedRoute>
                     <DashboardLayout>
                       <BankAccounts />
+                    </DashboardLayout>
+                  </ProtectedRoute>
+                }
+              />
+              {/* Tambahkan route baru di bawah ini */}
+              <Route
+                path="/reports"
+                element={
+                  <ProtectedRoute>
+                    <DashboardLayout>
+                      <Reports />
                     </DashboardLayout>
                   </ProtectedRoute>
                 }
